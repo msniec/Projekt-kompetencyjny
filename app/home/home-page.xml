@@ -7,6 +7,14 @@
     </ActionBar>
 
     <GridLayout>
-        <!-- Add your page content here -->
+        <ListView items="{{ myTitles }}" 
+            separatorColor="orangered" rowHeight="50"
+            class="list-group" id="listView">
+            <ListView.itemTemplate>
+                <StackLayout class="list-group-item">
+                    <Label text="{{ title || 'Downloading...' }}" textWrap="true" class="title" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
     </GridLayout>
 </Page>

@@ -7,9 +7,34 @@ logic, and to set up your page’s data binding.
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { HomeViewModel } from "./home-view-model";
+import { getFrameById } from "tns-core-modules/ui/frame";
 
-export function onNavigatingTo(args: NavigatedData) {
+import { EventData, fromObject } from "tns-core-modules/data/observable";
+import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
+
+export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+    const vm = fromObject({
+        // Setting the listview binding source
+        myTitles: [
+            { title: "The Da Vinci Code" },
+            { title: "Harry Potter and the Chamber of Secrets" },
+            { title: "The Alchemist" },
+            { title: "The Godfather" },
+            { title: "Goodnight Moon" },
+            { title: "The Hobbit" }
+        ]
+    });
+    page.bindingContext = vm;
+}
 
-    page.bindingContext = new HomeViewModel();
+export function onListViewLoaded(args: EventData) {
+    const listView = <ListView>args.object;
+}
+
+export function onItemTap(args: ItemEventData) {
+    const index = args.index;
+    const rootFrame = getFrameById("root-frame");
+    const page = rootFrame.currentPage;
+    page.bindingContext.myTitles.pop();
 }
