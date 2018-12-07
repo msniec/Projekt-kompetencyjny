@@ -18,3 +18,7 @@ components that have the btn class name.
 .btn {
     font-size: 18;
 }
+
+.input {
+    border: 1px solid black
+}

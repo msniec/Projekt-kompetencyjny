@@ -17,15 +17,8 @@ export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
         // Setting the listview binding source
-        text: "",
-        myTitles: [
-            { title: "The Da Vinci Code" },
-            { title: "Harry Potter and the Chamber of Secrets" },
-            { title: "The Alchemist" },
-            { title: "The Godfather" },
-            { title: "Goodnight Moon" },
-            { title: "The Hobbit" }
-        ]
+        text: "tetsw21",
+        myTitles: []
     });
     page.bindingContext = vm;
 }
@@ -35,13 +28,21 @@ export function onItemTap(args: ItemEventData) {
     const rootFrame = getFrameById("root-frame");
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById("listView");
-    page.bindingContext.myTitles.pop();
+    page.bindingContext.myTitles = page.bindingContext.myTitles.filter((value, i) => {
+        return i != index;
+    });
     lview.refresh();
 }
 
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
-
+    const rootFrame = getFrameById("root-frame");
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById("listView");
     console.log("onReturn");
-    this.firstTx = textField.text;
+    lview.bindingContext.myTitles.push({
+        title:  textField.text
+    })
+    textField.text = ""
+    // this.firstTx = textField.text;
 }
