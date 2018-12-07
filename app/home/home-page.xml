@@ -5,10 +5,13 @@
     <ActionBar class="action-bar">
         <Label class="action-bar-title" text="DUpa"></Label>
     </ActionBar>
-
+    <StackLayout>
+        <TextField text="{{ text }}" returnPress="onReturnPress"/>
+    </StackLayout>
     <GridLayout>
         <ListView items="{{ myTitles }}" 
             separatorColor="orangered" rowHeight="50"
+            itemTap="onItemTap"
             class="list-group" id="listView">
             <ListView.itemTemplate>
                 <StackLayout class="list-group-item">
