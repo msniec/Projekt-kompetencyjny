@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<key>NSSpeechRecognitionUsageDescription</key>
+<string>My custom recognition usage description. Overriding the default empty one in the plugin.</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>My custom microphone usage description. Overriding the default empty one in the plugin.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
