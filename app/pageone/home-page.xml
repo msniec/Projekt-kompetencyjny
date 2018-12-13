@@ -1,0 +1,23 @@
+<Page class="page"
+    navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Stronka"></Label>
+    </ActionBar>
+    <GridLayout>
+        <StackLayout>
+            <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
+            <ListView items="{{ myTitles }}" 
+                separatorColor="orangered" rowHeight="50"
+                itemTap="onItemTap"
+                class="list-group" id="listView">
+                <ListView.itemTemplate>
+                    <StackLayout class="list-group-item">
+                        <Label text="{{ title || 'Downloading...' }}" textWrap="true" class="title" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout> 
+    </GridLayout>
+</Page>
