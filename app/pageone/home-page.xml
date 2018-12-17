@@ -3,10 +3,14 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
     
     <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Super stronka vol 2"></Label>
+        <Label class="action-bar-title" text="Buttons Page"></Label>
     </ActionBar>
-    <GridLayout>
+    <AbsoluteLayout>
+    <Button text="Tap Me!" tap="onTap" class="my-button" />
+    <Button text="Tap Me!" tap="onTap" class="my-button" left="30" top="105"/>
+    
         <StackLayout>
+            
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
             <ListView items="{{ myTitles }}" 
                 separatorColor="orangered" rowHeight="50"
@@ -19,5 +23,5 @@
                 </ListView.itemTemplate>
             </ListView>
         </StackLayout> 
-    </GridLayout>
+    </AbsoluteLayout>
 </Page>

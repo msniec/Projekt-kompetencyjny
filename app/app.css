@@ -22,3 +22,26 @@ components that have the btn class name.
 .input {
     border: 1px solid black
 }
+
+.my-button {
+    /*background-color: orangered;*/
+    position: absolute; 
+    left: 0;
+    background-image: url("~/pic2.jpg") ;
+    border-radius: 8;
+    color:rgb(207, 188, 191);
+    font-family: FontAwesome;
+    font-size: 24;
+    /*vertical-align: left; float: left;*/
+    width: 50%;
+    height: 20%;
+    background-repeat: no-repeat;
+    
+    
+}
+
+.my-button:active {
+    /*background-color: lightslategray;*/
+    background-image: url("~/pic2.jpg") ;
+    color:blueviolet;
+}
