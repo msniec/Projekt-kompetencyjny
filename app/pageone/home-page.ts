@@ -14,6 +14,8 @@ import { EventData, fromObject } from "tns-core-modules/data/observable";
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
 import { TextField } from "tns-core-modules/ui/text-field";
 
+import { Button } from "tns-core-modules/ui/button";
+
 import PubSub from "pubsub-js";
 
 export function onNavigatingTo(args: EventData) {
@@ -54,4 +56,16 @@ export function onReturnPress(args) {
     });
     textField.text = "";
     // this.firstTx = textField.text;
+}
+
+export function onTap(args: EventData) {
+    const button = <Button>args.object;
+    button.text = `Tapped`;
+    const myButton = new Button();
+myButton.text = "Tap me!";
+myButton.className = "my-button";
+//myButton.on(Button.tapEvent, (data: GestureEventData) => {
+    // data is of type GestureEventData
+    //alert("Button Tapped!");
+//});
 }
