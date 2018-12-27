@@ -42,6 +42,6 @@ components that have the btn class name.
 
 .my-button:active {
     /*background-color: lightslategray;*/
-    background-image: url("~/pic2.jpg");
+    background-image: url("~/images/pic2.jpg");
     color: blueviolet;
 }
