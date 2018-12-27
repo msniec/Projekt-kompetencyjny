@@ -6,9 +6,11 @@ logic, and to set up your page’s data binding.
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 import { SpeechRecognitionInitializer } from "./../SpeechRecognition/SpeechRecognitionInitializer";
 
+import { Button } from "tns-core-modules/ui/button";
 import { alert } from "tns-core-modules/ui/dialogs";
 import { HomeViewModel } from "./home-view-model";
 import { getFrameById } from "tns-core-modules/ui/frame";
+import * as platformModule from "tns-core-modules/platform";
 
 import { EventData, fromObject } from "tns-core-modules/data/observable";
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
@@ -23,7 +25,8 @@ export function onNavigatingTo(args: EventData) {
     const vm = fromObject({
         // Setting the listview binding source
         text: "Item",
-        myTitles: []
+        myTitles: [],
+        screenWidth: platformModule.screen.mainScreen.widthPixels
     });
     page.bindingContext = vm;
     // PubSub.subscribe("addItem", item => {
@@ -41,6 +44,14 @@ export function onItemTap(args: ItemEventData) {
         return i != index;
     });
     lview.refresh();
+}
+export function redirectToIcon(args: EventData) {
+    const button: Button = <Button>args.object;
+    const page: Page = button.page;
+    page.frame.navigate("pageone/home-page");
+}
+export function voidF() {
+    console.log("VOI");
 }
 
 export function onReturnPress(args) {
