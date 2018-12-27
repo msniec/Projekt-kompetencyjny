@@ -6,7 +6,11 @@
         <Label class="action-bar-title" text="Projekt"></Label>
     </ActionBar>
     <GridLayout>
+
+    
         <StackLayout>
+        
+             <Button text="Voice recognition" tap="onTap"  class="voice-recognition-button"/>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
             <ListView items="{{ myTitles }}" 
                 separatorColor="orangered" rowHeight="50"

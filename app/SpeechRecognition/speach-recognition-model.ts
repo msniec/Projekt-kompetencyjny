@@ -2,22 +2,23 @@ import { SpeechRecognition } from "nativescript-speech-recognition";
 import { SpeechRecognitionTranscription } from "nativescript-speech-recognition";
 import { alert } from "tns-core-modules/ui/dialogs";
 import PubSub from "pubsub-js";
+import { Observable } from "tns-core-modules/ui/page/page";
 
-export class SpeechRecognitionInitializer {
-    private speechRecognition = new SpeechRecognition();
+export class SpeechRecognitionInitializer  {
+    private speechRecognition = new SpeechRecognition() ;
 
-    public checkAvailability(): void {
+  
+   
+
+    public checkAvailability():void {
         this.speechRecognition.available().then(
             (available: boolean) => {
-                // alert(available);
                 console.log("checking" + available);
-                this.listen();
             },
             (err: string) => alert("wyjebalo sie")
         );
     }
-    private listen() {
-        // console.log("Listen");
+    public listen() {
         this.speechRecognition
             .startListening({
                 // optional, uses the device locale by default
@@ -27,6 +28,8 @@ export class SpeechRecognitionInitializer {
                 // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
                     alert(`User said: ${transcription.text}`);
+
+                    console.log("koniec sluchania");
                     // alert(`User finished?: ${transcription.finished}`);
                     // PubSub.publish("addItem", {item: transcription.text})
                 },
@@ -50,4 +53,5 @@ export class SpeechRecognitionInitializer {
                 alert("DEA");
             });
     }
+    
 }

@@ -4,7 +4,7 @@ a code-behind file. The code-behind is a great place to place your view
 logic, and to set up your page’s data binding.
 */
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
-import { SpeechRecognitionInitializer } from "./../SpeechRecognition/SpeechRecognitionInitializer";
+import { SpeechRecognitionInitializer } from "../SpeechRecognition/speach-recognition-model";
 
 import { alert } from "tns-core-modules/ui/dialogs";
 import { HomeViewModel } from "./home-view-model";
@@ -15,22 +15,23 @@ import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
 import { TextField } from "tns-core-modules/ui/text-field";
 
 import PubSub from "pubsub-js";
-
+// const voiceRecognition = new SpeechRecognitionInitializer();
 export function onNavigatingTo(args: EventData) {
-    const spr = new SpeechRecognitionInitializer();
-    spr.checkAvailability();
+    
     const page = <Page>args.object;
     const vm = fromObject({
         // Setting the listview binding source
         text: "Item",
         myTitles: []
     });
-    page.bindingContext = vm;
-    // PubSub.subscribe("addItem", item => {
-    //     alert(item);
-    //     page.bindingContext.push(item);
-    // });
+    page.bindingContext =  vm;
+  
 }
+
+export function onTap() {
+    // voiceRecognition.listen();
+    console.log("ej ty klikasz")
+ }
 
 export function onItemTap(args: ItemEventData) {
     const index = args.index;
@@ -42,6 +43,7 @@ export function onItemTap(args: ItemEventData) {
     });
     lview.refresh();
 }
+
 
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
