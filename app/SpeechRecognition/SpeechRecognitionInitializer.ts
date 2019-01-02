@@ -3,6 +3,7 @@ import { SpeechRecognitionTranscription } from "nativescript-speech-recognition"
 import { alert } from "tns-core-modules/ui/dialogs";
 import PubSub from "pubsub-js";
 import {addToList} from '../home/home-page'
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -25,13 +26,18 @@ export class SpeechRecognitionInitializer {
                 locale: "en-US",
                 // set to true to get results back continuously
                 returnPartialResults: false,
-                // this callback will be invoked repeatedly during recognition
+                 // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
-                    onReturnPress(transcription.text);
-                    alert(`User said: ${transcription.text}`);
-                    addToList(transcription.text);
-                    // alert(`User finished?: ${transcription.finished}`);
-                    // PubSub.publish("addItem", {item: transcription.text})
+                    dialogs.confirm({
+                        title: "Adding products to list",
+                        message: `Do you want add this products ${transcription.text}`,
+                        okButtonText: "Add",
+                        cancelButtonText: "Cancel"
+                    }).then(result=> { 
+                        if(result==true){
+                            addToList(transcription.text);
+                        }
+                    });
                 },
                 onError: (error: string | number) => {
                     // because of the way iOS and Android differ, this is either:
