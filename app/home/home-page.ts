@@ -59,7 +59,7 @@ export function onReturnPress(args) {
     // this.firstTx = textField.text;
 }
 
-function addToList(item: string) {
+export function addToList(item: string) {
     const rootFrame = getFrameById("root-frame");
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById("listView");
@@ -67,4 +67,5 @@ function addToList(item: string) {
     lview.bindingContext.myTitles.push({
         title: item
     });
+    lview.refresh();
 }

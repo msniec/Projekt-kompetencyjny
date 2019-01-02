@@ -2,6 +2,7 @@ import { SpeechRecognition } from "nativescript-speech-recognition";
 import { SpeechRecognitionTranscription } from "nativescript-speech-recognition";
 import { alert } from "tns-core-modules/ui/dialogs";
 import PubSub from "pubsub-js";
+import {addToList} from '../home/home-page'
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -27,6 +28,7 @@ export class SpeechRecognitionInitializer {
                 // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
                     alert(`User said: ${transcription.text}`);
+                    addToList(transcription.text);
                     // alert(`User finished?: ${transcription.finished}`);
                     // PubSub.publish("addItem", {item: transcription.text})
                 },
