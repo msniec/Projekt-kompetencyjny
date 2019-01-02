@@ -56,13 +56,17 @@ export function voidF() {
 
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
+    addToList(textField.text);
+    textField.text = "";
+    // this.firstTx = textField.text;
+}
+
+function addToList(item: string) {
     const rootFrame = getFrameById("root-frame");
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById("listView");
     console.log("onReturn");
     lview.bindingContext.myTitles.push({
-        title: textField.text
+        title: item
     });
-    textField.text = "";
-    // this.firstTx = textField.text;
 }
