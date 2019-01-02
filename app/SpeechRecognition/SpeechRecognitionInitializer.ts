@@ -2,6 +2,7 @@ import { SpeechRecognition } from "nativescript-speech-recognition";
 import { SpeechRecognitionTranscription } from "nativescript-speech-recognition";
 import { alert } from "tns-core-modules/ui/dialogs";
 import PubSub from "pubsub-js";
+import { onReturnPress } from "~/pageone/home-page";
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -13,7 +14,7 @@ export class SpeechRecognitionInitializer {
                 console.log("checking" + available);
                 this.listen();
             },
-            (err: string) => alert("wyjebalo sie")
+            (err: string) => alert("speach reccognition isn't working")
         );
     }
     public listen() {
@@ -26,6 +27,7 @@ export class SpeechRecognitionInitializer {
                 returnPartialResults: false,
                 // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
+                    onReturnPress(transcription.text);
                     alert(`User said: ${transcription.text}`);
                     // alert(`User finished?: ${transcription.finished}`);
                     // PubSub.publish("addItem", {item: transcription.text})

@@ -62,5 +62,4 @@ export function onReturnPress(args) {
         title: textField.text
     });
     textField.text = "";
-    // this.firstTx = textField.text;
 }
