@@ -2,7 +2,7 @@ import { SpeechRecognition } from "nativescript-speech-recognition";
 import { SpeechRecognitionTranscription } from "nativescript-speech-recognition";
 import { alert } from "tns-core-modules/ui/dialogs";
 import PubSub from "pubsub-js";
-import { onReturnPress } from "~/pageone/home-page";
+import {addToList} from '../home/home-page'
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -29,6 +29,7 @@ export class SpeechRecognitionInitializer {
                 onResult: (transcription: SpeechRecognitionTranscription) => {
                     onReturnPress(transcription.text);
                     alert(`User said: ${transcription.text}`);
+                    addToList(transcription.text);
                     // alert(`User finished?: ${transcription.finished}`);
                     // PubSub.publish("addItem", {item: transcription.text})
                 },
