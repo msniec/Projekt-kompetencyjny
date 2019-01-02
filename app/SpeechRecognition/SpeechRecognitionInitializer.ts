@@ -30,7 +30,7 @@ export class SpeechRecognitionInitializer {
                 onResult: (transcription: SpeechRecognitionTranscription) => {
                     dialogs.confirm({
                         title: "Adding products to list",
-                        message: "Do you want add this products    "+transcription.text,
+                        message: `Do you want add this products ${transcription.text}`,
                         okButtonText: "Add",
                         cancelButtonText: "Cancel"
                     }).then(result=> { 
