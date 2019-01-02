@@ -18,9 +18,9 @@ import { TextField } from "tns-core-modules/ui/text-field";
 
 import PubSub from "pubsub-js";
 
+
 export function onNavigatingTo(args: EventData) {
-    const spr = new SpeechRecognitionInitializer();
-    spr.checkAvailability();
+   
     const page = <Page>args.object;
     const vm = fromObject({
         // Setting the listview binding source
@@ -29,10 +29,6 @@ export function onNavigatingTo(args: EventData) {
         screenWidth: platformModule.screen.mainScreen.widthPixels
     });
     page.bindingContext = vm;
-    // PubSub.subscribe("addItem", item => {
-    //     alert(item);
-    //     page.bindingContext.push(item);
-    // });
 }
 
 export function onItemTap(args: ItemEventData) {
@@ -51,6 +47,8 @@ export function redirectToIcon(args: EventData) {
     page.frame.navigate("pageone/home-page");
 }
 export function voidF() {
+    const spr = new SpeechRecognitionInitializer();
+    spr.checkAvailability();
     console.log("VOI");
 }
 

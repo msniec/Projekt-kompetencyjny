@@ -16,7 +16,7 @@ export class SpeechRecognitionInitializer {
             (err: string) => alert("wyjebalo sie")
         );
     }
-    private listen() {
+    public listen() {
         // console.log("Listen");
         this.speechRecognition
             .startListening({
