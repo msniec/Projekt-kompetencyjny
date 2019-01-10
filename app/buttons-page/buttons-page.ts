@@ -4,10 +4,10 @@ a code-behind file. The code-behind is a great place to place your view
 logic, and to set up your page’s data binding.
 */
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
-import { SpeechRecognitionInitializer } from "./../SpeechRecognition/SpeechRecognitionInitializer";
+import { SpeechRecognitionInitializer } from "../SpeechRecognition/SpeechRecognitionInitializer";
 
 import { alert } from "tns-core-modules/ui/dialogs";
-import { HomeViewModel } from "./home-view-model";
+import { HomeViewModel } from "./buttons-page-model";
 import { getFrameById } from "tns-core-modules/ui/frame";
 
 import { EventData, fromObject } from "tns-core-modules/data/observable";

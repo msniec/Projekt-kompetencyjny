@@ -8,6 +8,9 @@
     <AbsoluteLayout>
     <Button text="Tap Me!" tap="onTap" class="my-button" />
     <Button text="Tap Me!" tap="onTap" class="my-button" left="30" top="105"/>
+     <!-- <button text ="{{to co pobierzesz z fora}}" tap="onTab({{to co pobierasz z fora}})"> -->
+
+    
     
         <StackLayout>
             

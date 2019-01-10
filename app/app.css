@@ -27,7 +27,7 @@ components that have the btn class name.
     /*background-color: orangered;*/
     position: absolute;
     left: 0;
-    background-image: url("~/pic2.jpg");
+    background-image: url("~/images/pic2.jpg");
     border-radius: 8;
     color: rgb(207, 188, 191);
     font-family: FontAwesome;
