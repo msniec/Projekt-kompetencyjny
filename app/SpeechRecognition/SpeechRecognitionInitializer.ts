@@ -42,7 +42,7 @@ export class SpeechRecognitionInitializer {
                 onError: (error: string | number) => {
                     // because of the way iOS and Android differ, this is either:
                     // - iOS: A 'string', describing the issue.
-                    alert(error);
+                    alert('nie rozpoznano slowa');
                     // - Android: A 'number', referencing an 'ERROR_*' constant from https://developer.android.com/reference/android/speech/SpeechRecognizer.
                     //            If that code is either 6 or 7 you may want to restart listening.
                 }
