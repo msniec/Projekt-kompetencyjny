@@ -44,7 +44,7 @@ export function onItemTap(args: ItemEventData) {
 export function redirectToIcon(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-    page.frame.navigate("pageone/home-page");
+    page.frame.navigate("buttons-page/buttons-page");
 }
 export function voidF() {
     const spr = new SpeechRecognitionInitializer();
