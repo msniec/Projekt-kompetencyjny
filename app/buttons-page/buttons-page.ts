@@ -23,10 +23,10 @@ export function onNavigatingTo(args: EventData) {
 
     const list = [];
     const jedzenie = ["bread", "butter", "ham", ""]
-    let listofproducts: { id: number, name: string }[] = [
-        { "id": 0, "name": "bread"},
-        { "id": 1, "name": "butter"},
-        { "id": 2, "name": "ham"}
+    let listofproducts: { name: String, src: string }[] = [
+        { "name": "Bread", "src": createStyle("~/images/bread.png")},
+        // { "id": 1, "src": "butter"},
+        // { "id": 2, "src": "ham"}
         // { "id": 2, "name": "ham", "src": new URL("app\images\bread.png") }
     ];
 
@@ -91,4 +91,7 @@ export function onLabelTap(args: EventData){
     const button = <Button>args.object;
 
     console.log("tapped button: " + button.text );
+}
+function createStyle(src: String) {
+    return `background-image:url('${src}')`;
 }
