@@ -5,26 +5,21 @@
     <ActionBar class="action-bar">
         <Label class="action-bar-title" text="Buttons Page"></Label>
     </ActionBar>
-    <AbsoluteLayout>
-    <Button text="Tap Me!" tap="onTap" class="my-button" />
-    <Button text="Tap Me!" tap="onTap" class="my-button" left="30" top="105"/>
-     <!-- <button text ="{{to co pobierzesz z fora}}" tap="onTab({{to co pobierasz z fora}})"> -->
+   
+    
+     <!-- <button text = "{{to co pobierzesz z fora}}" tap="onTab({{to co pobierasz z fora}})"> -->
 
-    
-    
-        <StackLayout>
+    <ListView items="{{ items }}" class="list-group"> <!-- item -->
+    <ListView.itemTemplate>
+        <StackLayout class="list-group-item">
+            <!-- <Label text="Date" class="list-group-item-heading" /> -->
+            <!-- use $value to bind plain objects (e.g. number, string, Date)-->
+            <Button text= "{{ $value.name }}" col="1" tap="onLabelTap" class="list-group-item-heading" style="{{$value.src}}"/>
             
-            <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
-            <ListView items="{{ myTitles }}" 
-                separatorColor="orangered" rowHeight="50"
-                itemTap="onItemTap"
-                class="list-group" id="listView">
-                <ListView.itemTemplate>
-                    <StackLayout class="list-group-item">
-                        <Label text="{{ title || 'Downloading...' }}" textWrap="true" class="title" />
-                    </StackLayout>
-                </ListView.itemTemplate>
-            </ListView>
-        </StackLayout> 
-    </AbsoluteLayout>
+        </StackLayout>
+    </ListView.itemTemplate>
+</ListView>
+    
+        
+    
 </Page>

@@ -10,29 +10,46 @@ import { alert } from "tns-core-modules/ui/dialogs";
 import { HomeViewModel } from "./buttons-page-model";
 import { getFrameById } from "tns-core-modules/ui/frame";
 
-import { EventData, fromObject } from "tns-core-modules/data/observable";
+import { EventData, fromObject, Observable } from "tns-core-modules/data/observable";
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
 import { TextField } from "tns-core-modules/ui/text-field";
-
+import { ObservableArray, ChangedData } from "tns-core-modules/data/observable-array";
 import { Button } from "tns-core-modules/ui/button";
 
 import PubSub from "pubsub-js";
 
 export function onNavigatingTo(args: EventData) {
-    
-    
     const page = <Page>args.object;
-    const vm = fromObject({
-        // Setting the listview binding source
-        text: "Item",
-        myTitles: []
+
+    const list = [];
+    const jedzenie = ["bread", "butter", "ham", ""]
+    let listofproducts: { name: String, src: string }[] = [
+        { "name": "Bread", "src": createStyle("~/images/bread.png")},
+        // { "id": 1, "src": "butter"},
+        // { "id": 2, "src": "ham"}
+        // { "id": 2, "name": "ham", "src": new URL("app\images\bread.png") }
+    ];
+
+    //  let a: { id: number, name: string, src: HTMLImageElement }[] = [
+    //      { "id": 2, "name": "ham", "src": new Image()} /// tu sie wywala, nie wiem jak dodac zdjecie
+    //  ];
+
+
+    for (let i = 0; i < 10; i++) {
+        list.push(listofproducts[i]);
+    }
+
+    const viewModel = fromObject({
+        items: list,
+        
+        
     });
-    page.bindingContext = vm;
-    // PubSub.subscribe("addItem", item => {
-    //     alert(item);
-    //     page.bindingContext.push(item);
-    // });
+
+    page.bindingContext = viewModel;
 }
+
+
+
 
 export function onItemTap(args: ItemEventData) {
     const index = args.index;
@@ -68,4 +85,13 @@ myButton.className = "my-button";
     // data is of type GestureEventData
     //alert("Button Tapped!");
 //});
+}
+
+export function onLabelTap(args: EventData){
+    const button = <Button>args.object;
+
+    console.log("tapped button: " + button.text );
+}
+function createStyle(src: String) {
+    return `background-image:url('${src}')`;
 }
