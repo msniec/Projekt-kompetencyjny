@@ -1,9 +1,9 @@
-import { SpeechRecognition } from "nativescript-speech-recognition";
-import { SpeechRecognitionTranscription } from "nativescript-speech-recognition";
-import { alert } from "tns-core-modules/ui/dialogs";
-import PubSub from "pubsub-js";
-import {addToList} from '../home/home-page'
-import * as dialogs from "tns-core-modules/ui/dialogs";
+import { SpeechRecognition } from 'nativescript-speech-recognition';
+import { SpeechRecognitionTranscription } from 'nativescript-speech-recognition';
+import { alert } from 'tns-core-modules/ui/dialogs';
+import PubSub from 'pubsub-js';
+import * as dialogs from 'tns-core-modules/ui/dialogs';
+import Products from '~/Produts';
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -12,7 +12,7 @@ export class SpeechRecognitionInitializer {
         this.speechRecognition.available().then(
             (available: boolean) => {
                 // alert(available);
-                console.log("checking" + available);
+                console.log('checking' + available);
                 this.listen();
             },
             (err: string) => alert("speach reccognition isn't working")
@@ -23,21 +23,23 @@ export class SpeechRecognitionInitializer {
         this.speechRecognition
             .startListening({
                 // optional, uses the device locale by default
-                locale: "en-US",
+                locale: 'en-US',
                 // set to true to get results back continuously
                 returnPartialResults: false,
-                 // this callback will be invoked repeatedly during recognition
+                // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
-                    dialogs.confirm({
-                        title: "Adding products to list",
-                        message: `Do you want add this products ${transcription.text}`,
-                        okButtonText: "Add",
-                        cancelButtonText: "Cancel"
-                    }).then(result=> { 
-                        if(result==true){
-                            addToList(transcription.text);
-                        }
-                    });
+                    dialogs
+                        .confirm({
+                            title: 'Adding products to list',
+                            message: `Do you want add this products ${transcription.text}`,
+                            okButtonText: 'Add',
+                            cancelButtonText: 'Cancel'
+                        })
+                        .then(result => {
+                            if (result == true) {
+                                Products.addProduct(transcription.text);
+                            }
+                        });
                 },
                 onError: (error: string | number) => {
                     // because of the way iOS and Android differ, this is either:
@@ -56,7 +58,7 @@ export class SpeechRecognitionInitializer {
                 }
             )
             .catch((error: string | number) => {
-                alert("DEA");
+                alert('DEA');
             });
     }
 }

@@ -13,13 +13,13 @@
                 <Button text="Images"  width="{{screenWidth / 6}}" height="50" tap="voidF" backgroundColor="blue"/>
             </StackLayout>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
-            <ListView items="{{ myTitles }}" 
+            <ListView items="{{ products }}" 
                 separatorColor="orangered" rowHeight="50"
                 itemTap="onItemTap"
                 class="list-group" id="listView">
                 <ListView.itemTemplate>
                     <StackLayout class="list-group-item">
-                        <Label text="{{ title || 'Downloading...' }}" textWrap="true" class="title" />
+                        <Label text="{{ name || 'Downloading...' }}" textWrap="true" class="title" />
                     </StackLayout>
                 </ListView.itemTemplate>
             </ListView>
