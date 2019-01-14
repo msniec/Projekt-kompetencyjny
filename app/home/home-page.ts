@@ -65,3 +65,9 @@ export function addToList(item: string) {
     Products.addProduct(item);
     lview.refresh();
 }
+export function refresh(){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    lview.refresh();
+}
