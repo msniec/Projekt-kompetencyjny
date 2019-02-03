@@ -1,0 +1,14 @@
+<Page class="page"
+    navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    
+    <ActionBar class="action-bar">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="onNavBtnTap"/>
+        <Label class="action-bar-title" text="Product Details"></Label>
+    </ActionBar>
+   
+   
+    
+        
+    
+</Page>

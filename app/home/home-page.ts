@@ -54,6 +54,7 @@ export function onReturnPress(args) {
     let textField = <TextField>args.object;
     addToList(textField.text);
     textField.text = '';
+    // removeFromList(textField.text);
     // this.firstTx = textField.text;
 }
 
@@ -65,6 +66,31 @@ export function addToList(item: string) {
     Products.addProduct(item);
     lview.refresh();
 }
+
+export function removeFromList(item: string){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    console.log('removed');
+    Products.deleteProduct(item);
+    lview.refresh();
+}
+
+export function showDetails(item: string){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    console.log('details prod');
+    Products.showProductDetails(item);
+    lview.refresh();
+}
+
+export function redirectToDetails(args: EventData) {
+    const button: Button = <Button>args.object;
+    const page: Page = button.page;
+    page.frame.navigate('details-page/details-page');
+}
+
 export function refresh(){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
