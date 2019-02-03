@@ -19,10 +19,11 @@
                 class="list-group" id="listView">
                 <ListView.itemTemplate>
                     <StackLayout class="list-group-item">
-                        <Label text="{{ name || 'Downloading...' }}" textWrap="true" class="title" />
+                        <Label text="{{ name || 'Downloading...' }}" textWrap="true" class="title" tap="redirectToDetails"/>
                     </StackLayout>
                 </ListView.itemTemplate>
             </ListView>
+            <Button text="Delete all"  width="{{screenWidth / 6}}" height="50" tap="removeFromList" backgroundColor="pink"/>
         </StackLayout> 
     </GridLayout>
 </Page>
