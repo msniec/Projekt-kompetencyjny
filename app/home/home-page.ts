@@ -11,6 +11,7 @@ import { alert } from 'tns-core-modules/ui/dialogs';
 import { HomeViewModel } from './home-view-model';
 import { getFrameById } from 'tns-core-modules/ui/frame';
 import * as platformModule from 'tns-core-modules/platform';
+import * as dialogs from 'tns-core-modules/ui/dialogs';
 
 import { EventData, fromObject } from 'tns-core-modules/data/observable';
 import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
@@ -71,10 +72,28 @@ export function removeFromList(item: string){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
-    console.log('removed');
-    Products.deleteProduct(item);
+    
+    dialogs.confirm({
+        title: "Deleting all products from list",
+        message: "Are you sure?",
+        okButtonText: "Yes",
+        cancelButtonText: "No",
+        
+    }).then(result => {
+        if (result == true) {
+            Products.deleteProduct(item);
+            lview.refresh();
+            console.log("item removed");
+        }
+        console.log("Dialog result: " + result);
+    });
+
+
+    
     lview.refresh();
 }
+
+
 
 export function showDetails(item: string){
     const rootFrame = getFrameById('root-frame');
