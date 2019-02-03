@@ -69,7 +69,5 @@ export function refresh(){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
-    if(!lview) {
-        lview.refresh();
-    }
+    lview.refresh();
 }

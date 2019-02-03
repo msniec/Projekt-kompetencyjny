@@ -39,8 +39,7 @@ export class SpeechRecognitionInitializer {
                         .then(result => {
                             if (result == true) {
                                 Products.addProduct(transcription.text);
-                                refresh();
-                                
+                                refresh();  
                             }
                         });
                 },
