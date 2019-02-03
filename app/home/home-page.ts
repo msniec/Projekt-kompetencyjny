@@ -33,11 +33,11 @@ export function onItemTap(args: ItemEventData) {
     const index = args.index;
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-    const lview = <ListView>page.getViewById('listView');
+    
     page.bindingContext.products = page.bindingContext.products.filter((value, i) => {
         return i != index;
     });
-    lview.refresh();
+   refresh();
 }
 export function redirectToIcon(args: EventData) {
     const button: Button = <Button>args.object;
@@ -69,5 +69,8 @@ export function refresh(){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
-    lview.refresh();
+    if(lview){
+        lview.refresh();
+    }
+    
 }
