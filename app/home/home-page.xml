@@ -24,6 +24,7 @@
                 </ListView.itemTemplate>
             </ListView>
             <Button text="Delete all"  width="{{screenWidth / 6}}" height="50" tap="removeFromList" backgroundColor="pink"/>
+            <Button text="Delete one"  width="{{screenWidth / 6}}" height="50" tap="removeOneItemFromList" backgroundColor="purple"/>
         </StackLayout> 
     </GridLayout>
 </Page>

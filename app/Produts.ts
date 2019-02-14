@@ -14,6 +14,12 @@ export default class Products {
         refresh();
     }
 
+    public static deleteOneProduct(name:String){
+        if (this.products.indexOf(name) !== -1) return;
+        this.products.splice(this.products.indexOf(name), 1);
+        refresh();
+    }
+
     public static showProductDetails(name: String){
         this.products.toString;
         // console.log("details")

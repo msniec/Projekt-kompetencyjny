@@ -93,6 +93,28 @@ export function removeFromList(item: string){
     lview.refresh();
 }
 
+export function removeOneItemFromList(item: String){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    dialogs.confirm({
+        title: "Deleting one product from list",
+        message: "Are you sure?",
+        okButtonText: "Yes",
+        cancelButtonText: "No",
+        
+    }).then(result => {
+        if (result == true) {
+            Products.deleteOneProduct(item);
+            lview.refresh();
+            console.log("item removed");
+        }
+        console.log("Dialog result: " + result);
+    });
+
+    lview.refresh();
+}
+
 
 
 export function showDetails(item: string){
