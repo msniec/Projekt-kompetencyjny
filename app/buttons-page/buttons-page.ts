@@ -26,7 +26,15 @@ export function onNavigatingTo(args: EventData) {
     const jedzenie = ['bread', 'butter', 'ham', ''];
     let listofproducts: { name: String; src: string }[] = [
         { name: 'Bread', src: createStyle('~/images/bread.png') },
-        { name: 'Cookies', src: createStyle('~/images/cookie.png') }
+        { name: 'Cheese', src: createStyle('~/images/cheese.png') },
+        { name: 'Choocolate', src: createStyle('~/images/chocolate.png') },
+        { name: 'Cookies', src: createStyle('~/images/cookie.png') },
+        { name: 'Doughnut', src: createStyle('~/images/doughnut.png') },
+        { name: 'Meat', src: createStyle('~/images/meat.png') },
+        { name: 'Tomato', src: createStyle('~/images/tomato.png') },
+        { name: 'Water', src: createStyle('~/images/water.png') }
+
+
     ];
 
     const viewModel = fromObject({ items: listofproducts });
