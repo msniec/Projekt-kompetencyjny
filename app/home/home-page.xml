@@ -12,7 +12,7 @@
                 <Button text="Icons"  width="{{screenWidth / 9}}" height="50" tap="redirectToIcon" backgroundColor="green"/>
                 <Button text="Images"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="blue"/>
             </StackLayout>
-            <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
+            <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="write a product"/>
             <ListView items="{{ products }}" 
                 separatorColor="orangered" rowHeight="50"
                 itemTap="onItemTap"
