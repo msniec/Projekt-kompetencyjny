@@ -8,9 +8,9 @@
     <GridLayout>
         <StackLayout>
             <StackLayout orientation="horizontal">
-                <Button  id="voiceButton" text="Voice"  width="{{screenWidth / 6}}" height="50" tap="voidF" backgroundColor="{{color}}"/>
-                <Button text="Icons"  width="{{screenWidth / 6}}" height="50" tap="redirectToIcon" backgroundColor="green"/>
-                <Button text="Images"  width="{{screenWidth / 6}}" height="50" tap="voidF" backgroundColor="blue"/>
+                <Button  id="voiceButton" text="Voice"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="{{color}}"/>
+                <Button text="Icons"  width="{{screenWidth / 9}}" height="50" tap="redirectToIcon" backgroundColor="green"/>
+                <Button text="Images"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="blue"/>
             </StackLayout>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="test"/>
             <ListView items="{{ products }}" 

@@ -46,14 +46,21 @@ export function redirectToIcon(args: EventData) {
     const page: Page = button.page;
     page.frame.navigate('buttons-page/buttons-page');
 }
+export function changeColourButton(){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    page.bindingContext.color = 'blue';
+}
 export function voidF() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-    page.bindingContext.color = 'yellow';
+   
     const spr = new SpeechRecognitionInitializer();
     spr.checkAvailability();
-    // page.bindingContext.color = 'blue';
+    page.bindingContext.color = 'red';
     console.log('VOI');
+  
+  
 }
 
 export function voiceFunction(){
