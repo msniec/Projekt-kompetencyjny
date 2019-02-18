@@ -18,7 +18,19 @@ import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 
 import Products from '../Produts';
+import {init} from 'nativescript-plugin-firebase';
 
+init({
+  // Optionally pass in properties for database, authentication and cloud messaging,
+  // see their respective docs.
+}).then(
+    () => {
+      console.log("firebase.init done");
+    },
+    (error) => {
+      console.log("firebase.init error: " + error);
+    }
+);
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
