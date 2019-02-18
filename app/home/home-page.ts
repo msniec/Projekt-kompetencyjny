@@ -18,19 +18,9 @@ import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 
 import Products from '../Produts';
-import {init} from 'nativescript-plugin-firebase';
+import {init, push} from 'nativescript-plugin-firebase';
+import FirebaseConnection from '~/FirebaseConnection';
 
-init({
-  // Optionally pass in properties for database, authentication and cloud messaging,
-  // see their respective docs.
-}).then(
-    () => {
-      console.log("firebase.init done");
-    },
-    (error) => {
-      console.log("firebase.init error: " + error);
-    }
-);
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
@@ -40,6 +30,7 @@ export function onNavigatingTo(args: EventData) {
         screenWidth: platformModule.screen.mainScreen.widthPixels
     });
     page.bindingContext = vm;
+    initilizeFirebase();
 }
 
 export function onItemTap(args: ItemEventData) {
@@ -167,5 +158,20 @@ export function refresh(){
     if(lview){
         lview.refresh();
     }
-    
+}
+
+function initilizeFirebase() {
+    init({
+        // Optionally pass in properties for database, authentication and cloud messaging,
+        // see their respective docs.
+      }).then(
+          () => {
+              // push(`/users`, {products: ["water", "meat", "tomato"]}).then(result => {
+                  FirebaseConnection.init()//to trzeba gdzies zapisac na telefonie i na wejsciu do aplikacji odczytac
+              // });
+          },
+          (error) => {
+            console.log("firebase.init error: " + error);
+          }
+      );
 }
