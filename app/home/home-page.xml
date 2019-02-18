@@ -8,7 +8,7 @@
     <GridLayout>
         <StackLayout>
             <StackLayout orientation="horizontal">
-                <Button text="Voice"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="red"/>
+           <Button  id="voiceButton" text="Voice"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="{{color}}"/>
                 <Button text="Icons"  width="{{screenWidth / 9}}" height="50" tap="redirectToIcon" backgroundColor="green"/>
                 <Button text="Images"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="blue"/>
             </StackLayout>

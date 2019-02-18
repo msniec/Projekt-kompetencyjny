@@ -4,7 +4,7 @@ import { alert } from 'tns-core-modules/ui/dialogs';
 import PubSub from 'pubsub-js';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import Products from '~/Produts';
-import {refresh} from "../home/home-page"
+import {refresh, changeColourButton} from "../home/home-page"
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -39,6 +39,7 @@ export class SpeechRecognitionInitializer {
                         .then(result => {
                             if (result == true) {
                                 Products.addProduct(transcription.text);
+                                changeColourButton();
                                 refresh();  
                             }
                         });

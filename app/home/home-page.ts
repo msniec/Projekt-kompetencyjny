@@ -22,7 +22,7 @@ import Products from '../Produts';
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
-        // Setting the listview binding source
+        color:'red',
         text: 'Item',
         products: Products.products,
         screenWidth: platformModule.screen.mainScreen.widthPixels
@@ -45,11 +45,27 @@ export function redirectToIcon(args: EventData) {
     const page: Page = button.page;
     page.frame.navigate('buttons-page/buttons-page');
 }
+export function changeColourButton(){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    page.bindingContext.color = 'red';
+}
 export function voidF() {
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+   
     const spr = new SpeechRecognitionInitializer();
     spr.checkAvailability();
+    page.bindingContext.color = 'yellow';
     console.log('VOI');
+  
 }
+
+export function voiceFunction(){
+
+
+}
+
 
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
