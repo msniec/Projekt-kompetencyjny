@@ -13,7 +13,7 @@
         <StackLayout class="list-group-item">
             <!-- <Label text="Date" class="list-group-item-heading" /> -->
             <!-- use $value to bind plain objects (e.g. number, string, Date)-->
-            <Button text= "{{ $value.name }}" col="2" tap="onLabelTap" class="button-page-single" style="{{$value.src}}"/>
+            <Button text= "{{ $value.name }}" tap="onLabelTap" class="button-page-single" style="{{$value.src}}"/>
             
         </StackLayout>
     </ListView.itemTemplate>products
