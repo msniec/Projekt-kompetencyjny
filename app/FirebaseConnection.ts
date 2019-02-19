@@ -1,7 +1,9 @@
 import { knownFolders, Folder, File } from "tns-core-modules/file-system";
-import {getValue} from 'nativescript-plugin-firebase';
+import {getValue, setValue, push} from 'nativescript-plugin-firebase';
 import Products from "./Produts";
+import { refresh } from "./home/home-page";
 const path = "firebase.txt";
+
 
 export default class FirebaseConnection{
     public static userKey = "";
@@ -22,10 +24,8 @@ export default class FirebaseConnection{
     public static readProducts = () => {
         getValue(`/users/${FirebaseConnection.userKey}`)
             .then(result => {
-                for(const product of result.value.products) {
-                    console.log(product);
-                    Products.addProduct(product);
-                }
+                Products.products = result.value;
+                refresh(); 
             })
             .catch(error => console.log("Error: " + error));
     }
@@ -42,5 +42,24 @@ export default class FirebaseConnection{
             });
     }
 
-
+    public static updateProduct = () =>{
+        const documents: Folder = <Folder>knownFolders.documents();
+        if(!documents.contains(path)){
+            push('/users',Products.products).then(
+                (result)  => {
+                 console.log("plik firebase nie istnieje wygenerowany klucz" + result.key);
+                 FirebaseConnection.createFile(result.key);
+                }
+            );
+            
+        }
+        const file: File = <File>documents.getFile(path);
+       setValue(`/users/${FirebaseConnection.userKey}`,Products.products)
+            .then(()=>{
+                console.log("update produktow dla klucza"+FirebaseConnection.userKey)
+            }).catch((err)=>{
+                console.log(err);
+            })
+        
+    }
 }

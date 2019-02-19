@@ -30,7 +30,6 @@ export function onNavigatingTo(args: EventData) {
         screenWidth: platformModule.screen.mainScreen.widthPixels
     });
     page.bindingContext = vm;
-    initilizeFirebase();
 }
 
 export function onItemTap(args: ItemEventData) {
@@ -160,7 +159,7 @@ export function refresh(){
     }
 }
 
-function initilizeFirebase() {
+export function initilizeFirebase() {
     init({
         // Optionally pass in properties for database, authentication and cloud messaging,
         // see their respective docs.
