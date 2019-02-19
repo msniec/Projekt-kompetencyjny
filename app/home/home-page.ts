@@ -12,6 +12,7 @@ import { HomeViewModel } from './home-view-model';
 import { getFrameById } from 'tns-core-modules/ui/frame';
 import * as platformModule from 'tns-core-modules/platform';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
+import * as imagepicker from "nativescript-imagepicker";
 
 import { EventData, fromObject } from 'tns-core-modules/data/observable';
 import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
@@ -63,10 +64,7 @@ export function voidF() {
   
 }
 
-export function voiceFunction(){
 
-
-}
 
 
 export function onReturnPress(args) {
@@ -144,6 +142,7 @@ export function showDetails(item: string){
     lview.refresh();
 }
 
+
 export function redirectToDetails(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
@@ -163,3 +162,25 @@ export function refresh(){
         }
     }
     } 
+
+    export function addPhoto(){
+        let context = imagepicker.create({
+            mode: "single" // use "multiple" for multiple selection
+        });
+        context
+        .authorize() // czy zgadazmy sie na dostep do galerii
+        .then(function() {
+            console.log("lol udalo sie zautoryzowac");
+            return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)
+            
+        })
+        .then(function(selection) {
+            selection.forEach(function(selected) {
+                // process the selected image
+                console.log("tu powinno byc wybieranie zdjecia")
+            });
+            
+        }).catch(function (e) {
+            // process error
+        });
+    }
