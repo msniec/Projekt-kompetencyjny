@@ -5,6 +5,7 @@ import { init } from "nativescript-plugin-firebase";
 
 
 applicationOn(launchEvent, (args: LaunchEventData) => {
+    console.log("applicationOn");
     initilizeFirebase();
  });
 app.run({ moduleName: "app-root" });

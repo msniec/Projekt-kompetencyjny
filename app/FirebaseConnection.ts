@@ -12,6 +12,7 @@ export default class FirebaseConnection{
         const documents: Folder = <Folder>knownFolders.documents();
         if(!documents.contains(path)) return;
         const file: File = <File>documents.getFile(path);
+        
         file.readText()
             .then((res) => {
                 FirebaseConnection.userKey = res;
@@ -19,12 +20,14 @@ export default class FirebaseConnection{
             }).catch((err) => {
                 console.log(err.stack);
             });
+            
     }
 
     public static readProducts = () => {
         getValue(`/users/${FirebaseConnection.userKey}`)
             .then(result => {
                 Products.products = result.value;
+                refresh();
             })
             .catch(error => console.log("Error: " + error));
     }

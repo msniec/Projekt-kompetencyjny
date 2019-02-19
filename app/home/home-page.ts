@@ -151,26 +151,15 @@ export function redirectToDetails(args: EventData) {
 }
 
 export function refresh(){
-    const rootFrame = getFrameById('root-frame');
-    const page = rootFrame.currentPage;
-    const lview = <ListView>page.getViewById('listView');
-    if(lview){
-        lview.refresh();
+    console.log("refreshuje");
+        const rootFrame = getFrameById('root-frame');
+        const page = rootFrame.currentPage;
+       if(page) {
+    console.log("Mam page")
+        const lview = <ListView>page.getViewById('listView');
+        if(lview){
+    console.log("Mam lview")
+            lview.refresh();
+        }
     }
-}
-
-export function initilizeFirebase() {
-    init({
-        // Optionally pass in properties for database, authentication and cloud messaging,
-        // see their respective docs.
-      }).then(
-          () => {
-              // push(`/users`, {products: ["water", "meat", "tomato"]}).then(result => {
-                  FirebaseConnection.init()//to trzeba gdzies zapisac na telefonie i na wejsciu do aplikacji odczytac
-              // });
-          },
-          (error) => {
-            console.log("firebase.init error: " + error);
-          }
-      );
-}
+    } 
