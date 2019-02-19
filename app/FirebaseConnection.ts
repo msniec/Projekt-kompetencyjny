@@ -25,7 +25,6 @@ export default class FirebaseConnection{
         getValue(`/users/${FirebaseConnection.userKey}`)
             .then(result => {
                 Products.products = result.value;
-                refresh(); 
             })
             .catch(error => console.log("Error: " + error));
     }
