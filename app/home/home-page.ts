@@ -13,14 +13,10 @@ import { getFrameById } from 'tns-core-modules/ui/frame';
 import * as platformModule from 'tns-core-modules/platform';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import * as imagepicker from "nativescript-imagepicker";
-
 import { EventData, fromObject } from 'tns-core-modules/data/observable';
 import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
-
 import Products from '../Produts';
-import {init, push} from 'nativescript-plugin-firebase';
-import FirebaseConnection from '~/FirebaseConnection';
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -43,16 +39,19 @@ export function onItemTap(args: ItemEventData) {
     });
    refresh();
 }
+
 export function redirectToIcon(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
     page.frame.navigate('buttons-page/buttons-page');
 }
+
 export function changeColourButton(){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     page.bindingContext.color = 'red';
 }
+
 export function voidF() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
@@ -64,15 +63,10 @@ export function voidF() {
   
 }
 
-
-
-
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
     addToList(textField.text);
     textField.text = '';
-    // removeFromList(textField.text);
-    // this.firstTx = textField.text;
 }
 
 export function addToList(item: string) {
@@ -87,8 +81,7 @@ export function addToList(item: string) {
 export function removeFromList(item: string){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-    const lview = <ListView>page.getViewById('listView');
-    
+    const lview = <ListView>page.getViewById('listView');    
     dialogs.confirm({
         title: "Deleting all products from list",
         message: "Are you sure?",
@@ -103,9 +96,6 @@ export function removeFromList(item: string){
         }
         console.log("Dialog result: " + result);
     });
-
-
-    
     lview.refresh();
 }
 
@@ -118,7 +108,6 @@ export function removeOneItemFromList(item: String){
         message: "Are you sure?",
         okButtonText: "Yes",
         cancelButtonText: "No",
-        
     }).then(result => {
         if (result == true) {
             Products.deleteOneProduct(item);
@@ -127,11 +116,8 @@ export function removeOneItemFromList(item: String){
         }
         console.log("Dialog result: " + result);
     });
-
     lview.refresh();
 }
-
-
 
 export function showDetails(item: string){
     const rootFrame = getFrameById('root-frame');
@@ -141,7 +127,6 @@ export function showDetails(item: string){
     Products.showProductDetails(item);
     lview.refresh();
 }
-
 
 export function redirectToDetails(args: EventData) {
     const button: Button = <Button>args.object;
@@ -161,18 +146,17 @@ export function refresh(){
             lview.refresh();
         }
     }
-    } 
+} 
 
-    export function addPhoto(){
-        let context = imagepicker.create({
-            mode: "single" // use "multiple" for multiple selection
+export function addPhoto(){
+     let context = imagepicker.create({
+        mode: "single" // use "multiple" for multiple selection
         });
-        context
+    context
         .authorize() // czy zgadazmy sie na dostep do galerii
         .then(function() {
             console.log("lol udalo sie zautoryzowac");
-            return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)
-            
+            return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)   
         })
         .then(function(selection) {
             selection.forEach(function(selected) {
@@ -183,4 +167,4 @@ export function refresh(){
         }).catch(function (e) {
             // process error
         });
-    }
+}
