@@ -5,7 +5,7 @@ logic, and to set up your page’s data binding.
 */
 import { NavigatedData, Page } from 'tns-core-modules/ui/page';
 import { SpeechRecognitionInitializer } from './../SpeechRecognition/SpeechRecognitionInitializer';
-
+import { GestureEventData } from 'tns-core-modules/ui/gestures';
 import { Button } from 'tns-core-modules/ui/button';
 import { alert } from 'tns-core-modules/ui/dialogs';
 import { HomeViewModel } from './home-view-model';
@@ -22,7 +22,7 @@ import Products from '../Produts';
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
-        color:'red',
+        color: 'red',
         text: 'Item',
         products: Products.products,
         screenWidth: platformModule.screen.mainScreen.widthPixels
@@ -30,22 +30,24 @@ export function onNavigatingTo(args: EventData) {
     page.bindingContext = vm;
 }
 
-export function onItemTap(args: ItemEventData) {
-    const index = args.index;
+export function onItemTap(args: GestureEventData) {
+    console.log('XD');
+    const index = args.object.get('index');
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-    
+
     page.bindingContext.products = page.bindingContext.products.filter((value, i) => {
         return i != index;
     });
-   refresh();
+    refresh();
 }
+
 export function redirectToIcon(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
     page.frame.navigate('buttons-page/buttons-page');
 }
-export function changeColourButton(){
+export function changeColourButton() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     page.bindingContext.color = 'red';
@@ -53,26 +55,21 @@ export function changeColourButton(){
 export function voidF() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-   
+
     const spr = new SpeechRecognitionInitializer();
     spr.checkAvailability();
     page.bindingContext.color = 'yellow';
     console.log('VOI');
-  
 }
 
-export function voiceFunction(){
-
-
-}
-
+export function voiceFunction() {}
 
 export function onReturnPress(args) {
     let textField = <TextField>args.object;
     addToList(textField.text);
     textField.text = '';
     // removeFromList(textField.text);
-    // this.firstTx = textField.text;
+    // this.firstTx = textField.text;NavigationEntry
 }
 
 export function addToList(item: string) {
@@ -84,76 +81,79 @@ export function addToList(item: string) {
     lview.refresh();
 }
 
-export function removeFromList(item: string){
+export function removeFromList(item: string) {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
-    
-    dialogs.confirm({
-        title: "Deleting all products from list",
-        message: "Are you sure?",
-        okButtonText: "Yes",
-        cancelButtonText: "No",
-        
-    }).then(result => {
-        if (result == true) {
-            Products.deleteProduct(item);
-            lview.refresh();
-            console.log("item removed");
-        }
-        console.log("Dialog result: " + result);
-    });
 
-
-    
-    lview.refresh();
-}
-
-export function removeOneItemFromList(item: String){
-    const rootFrame = getFrameById('root-frame');
-    const page = rootFrame.currentPage;
-    const lview = <ListView>page.getViewById('listView');
-    dialogs.confirm({
-        title: "Deleting one product from list",
-        message: "Are you sure?",
-        okButtonText: "Yes",
-        cancelButtonText: "No",
-        
-    }).then(result => {
-        if (result == true) {
-            Products.deleteOneProduct(item);
-            lview.refresh();
-            console.log("item removed");
-        }
-        console.log("Dialog result: " + result);
-    });
+    dialogs
+        .confirm({
+            title: 'Deleting all products from list',
+            message: 'Are you sure?',
+            okButtonText: 'Yes',
+            cancelButtonText: 'No'
+        })
+        .then(result => {
+            if (result == true) {
+                Products.deleteProduct(item);
+                lview.refresh();
+                console.log('item removed');
+            }
+            console.log('Dialog result: ' + result);
+        });
 
     lview.refresh();
 }
 
+export function removeOneItemFromList(item: String) {
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    dialogs
+        .confirm({
+            title: 'Deleting one product from list',
+            message: 'Are you sure?',
+            okButtonText: 'Yes',
+            cancelButtonText: 'No'
+        })
+        .then(result => {
+            if (result == true) {
+                Products.deleteOneProduct(item);
+                lview.refresh();
+                console.log('item removed');
+            }
+            console.log('Dialog result: ' + result);
+        });
 
+    lview.refresh();
+}
 
-export function showDetails(item: string){
+export function showDetails(item: string) {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
     console.log('details prod');
-    Products.showProductDetails(item);
     lview.refresh();
 }
 
-export function redirectToDetails(args: EventData) {
+export function redirectToDetails(args: ItemEventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-    page.frame.navigate('details-page/details-page');
+    const name = args.object.get('text');
+    let navEntryWithContext: any = {
+        moduleName: 'details-page/details-page',
+        context: {
+            name
+        }
+    };
+    page.frame.navigate(navEntryWithContext);
 }
 
-export function refresh(){
+export function refresh() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     const lview = <ListView>page.getViewById('listView');
-    if(lview){
+    if (lview) {
         lview.refresh();
     }
-    
 }

@@ -21,7 +21,8 @@ import Products from '~/Produts';
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
-
+    const navigationContext = page.navigationContext;
+    console.log(navigationContext)
 }
 
 

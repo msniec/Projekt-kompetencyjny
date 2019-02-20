@@ -19,10 +19,4 @@ export default class Products {
         this.products.splice(this.products.indexOf(name), 1);
         refresh();
     }
-
-    public static showProductDetails(name: String){
-        this.products.toString;
-        // console.log("details")
-        refresh();
-    }
 }
