@@ -27,7 +27,7 @@ export function onNavigatingTo(args: EventData) {
     let listofproducts: { name: String; src: string }[] = [
         { name: 'Bread', src: createStyle('~/images/bread.png') },
         { name: 'Cheese', src: createStyle('~/images/cheese.png') },
-        { name: 'Choocolate', src: createStyle('~/images/chocolate.png') },
+        { name: 'Chocolate', src: createStyle('~/images/chocolate.png') },
         { name: 'Cookies', src: createStyle('~/images/cookie.png') },
         { name: 'Doughnut', src: createStyle('~/images/doughnut.png') },
         { name: 'Meat', src: createStyle('~/images/meat.png') },
