@@ -18,7 +18,9 @@ import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import Products from '../Produts';
 
+var iterator = 3;
 export function onNavigatingTo(args: EventData) {
+    
     const page = <Page>args.object;
     const vm = fromObject({
         color:'red',
@@ -150,7 +152,7 @@ export function refresh(){
 
 export function addPhoto(){
      let context = imagepicker.create({
-        mode: "single" // use "multiple" for multiple selection
+        mode: "multiple" // use "multiple" for multiple selection
         });
     context
         .authorize() // czy zgadazmy sie na dostep do galerii
@@ -158,9 +160,19 @@ export function addPhoto(){
             console.log("lol udalo sie zautoryzowac");
             return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)   
         })
-        .then(function(selection) {
-            selection.forEach(function(selected) {
-                // process the selected image
+        .then((selection)=>{
+            selection.forEach((selected)=> {
+                if(iterator===3){
+                    Products.addProduct("Cucumber");
+                }
+                if(iterator===2){
+                    Products.addProduct("Carrot");
+                }
+                if(iterator===1){
+                    Products.addProduct("Butter");
+                }
+                iterator--;
+                
                 console.log("tu powinno byc wybieranie zdjecia")
             });
             
