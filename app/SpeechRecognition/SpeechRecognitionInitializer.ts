@@ -4,7 +4,7 @@ import { alert } from 'tns-core-modules/ui/dialogs';
 import PubSub from 'pubsub-js';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import Products from '~/Produts';
-import {refresh, changeColourButton} from "../home/home-page"
+import { refresh, changeColourButton } from '../home/home-page';
 
 export class SpeechRecognitionInitializer {
     private speechRecognition = new SpeechRecognition();
@@ -12,7 +12,6 @@ export class SpeechRecognitionInitializer {
     public checkAvailability(): void {
         this.speechRecognition.available().then(
             (available: boolean) => {
-                console.log('checking' + available);
                 this.listen();
             },
             (err: string) => alert("speach reccognition isn't working")
@@ -34,7 +33,7 @@ export class SpeechRecognitionInitializer {
                         .then(result => {
                             if (result == true) {
                                 Products.addProduct(transcription.text);
-                                refresh();  
+                                refresh();
                             }
                             changeColourButton();
                         });
@@ -44,14 +43,7 @@ export class SpeechRecognitionInitializer {
                     changeColourButton();
                 }
             })
-            .then(
-                (started: boolean) => {
-                    console.log(`started listening`);
-                },
-                (errorMessage: string) => {
-                    console.log(`Error: ${errorMessage}`);
-                }
-            )
+            .then((started: boolean) => {}, (errorMessage: string) => {})
             .catch((error: string | number) => {
                 alert('DEA');
             });

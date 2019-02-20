@@ -33,8 +33,6 @@ export function onNavigatingTo(args: EventData) {
         { name: 'Meat', src: createStyle('~/images/meat.png') },
         { name: 'Tomato', src: createStyle('~/images/tomato.png') },
         { name: 'Water', src: createStyle('~/images/water.png') }
-
-
     ];
 
     const viewModel = fromObject({ items: listofproducts });
@@ -44,7 +42,6 @@ export function onNavigatingTo(args: EventData) {
 
 export function onLabelTap(args: EventData) {
     const button = <Button>args.object;
-    console.log('tapped button: ' + button.text);
     Products.addProduct(button.text);
     onNavBtnTap();
 }
@@ -53,7 +50,6 @@ function createStyle(src: String) {
 }
 
 export function onNavBtnTap() {
-    console.log('BAC');
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
     page.frame.goBack();

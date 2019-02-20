@@ -5,17 +5,18 @@
     <ActionBar class="action-bar">
         <Label class="action-bar-title" text="InApp"></Label>
     </ActionBar>
-    <GridLayout>
+    <GridLayout padding="8">
         <StackLayout>
             <StackLayout orientation="horizontal">
-                <Button class="btn btn-outline btn-rounded-lg" text="Voice"  width="{{screenWidth / 12}}" height="30" tap="voidF" backgroundColor="{{color}}"/>
-                <Button class="btn btn-outline btn-rounded-lg" text="Icons"  width="{{screenWidth / 12}}" height="30" tap="redirectToIcon"/>
-                <Button class="btn btn-outline btn-rounded-lg" text="Images"  width="{{screenWidth / 12}}" height="30" tap="addPhoto" />
+                <Button class="btn btn-outline btn-rounded-lg" text="Voice"  width="{{screenWidth / 9}}" height="30" tap="voidF" backgroundColor="{{color}}"/>
+                <Button class="btn btn-outline btn-rounded-lg" text="Icons"  width="{{screenWidth / 9}}" height="30" tap="redirectToIcon"/>
+                <Button class="btn btn-outline btn-rounded-lg" text="Images"  width="{{screenWidth / 9}}" height="30" tap="addPhoto" />
             </StackLayout>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="write a product"/>
             <ListView items="{{ products }}" 
                 separatorColor="orangered" rowHeight="50"
                 itemTap="onItemTap"
+                height="300"
                 class="list-group" id="listView">
                 <ListView.itemTemplate>
                     <StackLayout class="list-group-item">
@@ -24,7 +25,6 @@
                 </ListView.itemTemplate>
             </ListView>
             <Button class="btn btn-outline btn-rounded-lg" text="Delete all"  width="{{screenWidth / 6}}" height="30" tap="removeFromList"/>
-            <Button class="btn btn-outline btn-rounded-lg" text="Delete one"  width="{{screenWidth / 6}}" height="30" tap="removeOneItemFromList"/>
         </StackLayout> 
     </GridLayout>
 </Page>
