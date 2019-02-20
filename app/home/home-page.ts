@@ -18,7 +18,7 @@ import { ListView, ItemEventData } from 'tns-core-modules/ui/list-view';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import Products from '../Produts';
 
-var iterator = 3;
+var iterator = 3;   
 export function onNavigatingTo(args: EventData) {
     
     const page = <Page>args.object;
@@ -157,7 +157,6 @@ export function addPhoto(){
     context
         .authorize() // czy zgadazmy sie na dostep do galerii
         .then(function() {
-            console.log("lol udalo sie zautoryzowac");
             return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)   
         })
         .then((selection)=>{
@@ -172,11 +171,8 @@ export function addPhoto(){
                     Products.addProduct("Butter");
                 }
                 iterator--;
-                
-                console.log("tu powinno byc wybieranie zdjecia")
             });
             
         }).catch(function (e) {
-            // process error
         });
 }
