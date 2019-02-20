@@ -8,10 +8,9 @@ applicationOn(launchEvent, (args: LaunchEventData) => {
     initilizeFirebase();
  });
 
-
 app.run({ moduleName: "app-root" });
 
- function initilizeFirebase() {
+function initilizeFirebase() {
     init({
       }).then(
           () => {

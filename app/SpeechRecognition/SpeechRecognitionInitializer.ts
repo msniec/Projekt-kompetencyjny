@@ -12,7 +12,6 @@ export class SpeechRecognitionInitializer {
     public checkAvailability(): void {
         this.speechRecognition.available().then(
             (available: boolean) => {
-                // alert(available);
                 console.log('checking' + available);
                 this.listen();
             },
@@ -20,14 +19,10 @@ export class SpeechRecognitionInitializer {
         );
     }
     public listen() {
-        // console.log("Listen");
         this.speechRecognition
             .startListening({
-                // optional, uses the device locale by default
                 locale: 'en-US',
-                // set to true to get results back continuously
                 returnPartialResults: false,
-                // this callback will be invoked repeatedly during recognition
                 onResult: (transcription: SpeechRecognitionTranscription) => {
                     dialogs
                         .confirm({
@@ -45,12 +40,8 @@ export class SpeechRecognitionInitializer {
                         });
                 },
                 onError: (error: string | number) => {
-                    // because of the way iOS and Android differ, this is either:
-                    // - iOS: A 'string', describing the issue.
                     alert('Do not recognize word');
                     changeColourButton();
-                    // - Android: A 'number', referencing an 'ERROR_*' constant from https://developer.android.com/reference/android/speech/SpeechRecognizer.
-                    //            If that code is either 6 or 7 you may want to restart listening.
                 }
             })
             .then(

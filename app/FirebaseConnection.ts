@@ -19,8 +19,7 @@ export default class FirebaseConnection{
                 FirebaseConnection.readProducts();
             }).catch((err) => {
                 console.log(err.stack);
-            });
-            
+            }); 
     }
 
     public static readProducts = () => {
@@ -52,8 +51,7 @@ export default class FirebaseConnection{
                  console.log("plik firebase nie istnieje wygenerowany klucz" + result.key);
                  FirebaseConnection.createFile(result.key);
                 }
-            );
-            
+            ); 
         }
         const file: File = <File>documents.getFile(path);
        setValue(`/users/${FirebaseConnection.userKey}`,Products.products)
@@ -62,6 +60,5 @@ export default class FirebaseConnection{
             }).catch((err)=>{
                 console.log(err);
             })
-        
     }
 }
