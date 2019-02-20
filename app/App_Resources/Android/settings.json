@@ -1,1 +1,6 @@
-{"appId":"org.nativescript.kompetencyjny","minSdkVersion":null,"targetSdkVersion":null}
+{
+    "appId":"org.nativescript.kompetencyjny",
+    "minSdkVersion":21,
+    "targetSdkVersion":28,
+    "multiDexEnabled": true
+}

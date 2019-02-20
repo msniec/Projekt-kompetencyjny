@@ -1,14 +1,22 @@
-/*
-In NativeScript, the app.ts file is the entry point to your application.
-You can use this file to perform app-level initialization, but the primary
-purpose of the file is to pass control to the app’s first module.
-*/
+import * as app from 'tns-core-modules/application';
+import { on as applicationOn, launchEvent, LaunchEventData } from 'tns-core-modules/application';
+import FirebaseConnection from './FirebaseConnection';
+import { init } from 'nativescript-plugin-firebase';
 
-import * as app from "tns-core-modules/application";
+applicationOn(launchEvent, (args: LaunchEventData) => {
+    console.log('applicationOn');
+    initilizeFirebase();
+});
 
-app.run({ moduleName: "app-root" });
+app.run({ moduleName: 'app-root' });
 
-/*
-Do not place any code after the application has been started as it will not
-be executed on iOS.
-*/
+function initilizeFirebase() {
+    init({}).then(
+        () => {
+            FirebaseConnection.init();
+        },
+        error => {
+            console.log('firebase.init error: ' + error);
+        }
+    );
+}
