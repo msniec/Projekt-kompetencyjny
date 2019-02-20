@@ -57,12 +57,10 @@ export function changeColourButton(){
 export function voidF() {
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-   
     const spr = new SpeechRecognitionInitializer();
-    spr.checkAvailability();
     page.bindingContext.color = 'yellow';
+    spr.checkAvailability();
     console.log('VOI');
-  
 }
 
 export function onReturnPress(args) {
@@ -152,15 +150,15 @@ export function refresh(){
 
 export function addPhoto(){
      let context = imagepicker.create({
-        mode: "multiple" // use "multiple" for multiple selection
+        mode: "multiple" 
         });
     context
-        .authorize() // czy zgadazmy sie na dostep do galerii
+        .authorize() 
         .then(function() {
-            return context.present(); // tutaj zwracana jest tablica wybranych zdjec (w naszym przypadku 1 bo flaga single w mode)   
+            return context.present(); 
         })
-        .then((selection)=>{
-            selection.forEach((selected)=> {
+        .then((selection) => {
+            selection.forEach((selected) => {
                 if(iterator===3){
                     Products.addProduct("Cucumber");
                 }
@@ -172,7 +170,7 @@ export function addPhoto(){
                 }
                 iterator--;
             });
-            
-        }).catch(function (e) {
+        }).catch((error) => {
+            console.log(error);
         });
 }
