@@ -14,7 +14,7 @@
             </StackLayout>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="write a product"/>
             <ListView items="{{ products }}" 
-                separatorColor="orangered" rowHeight="50"
+                separatorColor="orangered" rowHeight="60"
                 itemTap="onItemTap"
                 class="list-group" id="listView">
                 <ListView.itemTemplate>

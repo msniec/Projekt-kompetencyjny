@@ -7,7 +7,13 @@
         <Label class="action-bar-title" text="Product Details"></Label>
     </ActionBar>
    
+   <StackLayout>
+   <Label text="Put your note here:">
    
+   </Label>
+   <TextField class="input input-border" text="{{ text }}"/>
+   <Button text="Done" width="{{screenWidth / 6}}" height="50" tap="onReturnPress"></Button>
+   </StackLayout>
     
         
     

@@ -32,3 +32,25 @@ export function onNavBtnTap() {
     const page = rootFrame.currentPage;
     page.frame.goBack();
 }
+
+
+export function showName(){
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    page.frame.goBack()
+}
+
+export function onReturnPress(args) {
+    let textField = <TextField>args.object;
+    addToList(textField.text);
+    textField.text = '';
+}
+
+export function addToList(item: string) {
+    const rootFrame = getFrameById('root-frame');
+    const page = rootFrame.currentPage;
+    const lview = <ListView>page.getViewById('listView');
+    console.log('onReturn');
+    Products.addProduct(item);
+    lview.refresh();
+}
