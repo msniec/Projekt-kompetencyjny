@@ -23,7 +23,7 @@ export function onNavigatingTo(args: EventData) {
     
     const page = <Page>args.object;
     const vm = fromObject({
-        color:'red',
+        color:'white',
         text: 'Item',
         products: Products.products,
         screenWidth: platformModule.screen.mainScreen.widthPixels
@@ -51,7 +51,7 @@ export function redirectToIcon(args: EventData) {
 export function changeColourButton(){
     const rootFrame = getFrameById('root-frame');
     const page = rootFrame.currentPage;
-    page.bindingContext.color = 'red';
+    page.bindingContext.color = 'white';
 }
 
 export function voidF() {

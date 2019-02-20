@@ -8,9 +8,9 @@
     <GridLayout>
         <StackLayout>
             <StackLayout orientation="horizontal">
-           <Button  id="voiceButton" text="Voice"  width="{{screenWidth / 9}}" height="50" tap="voidF" backgroundColor="{{color}}"/>
-                <Button text="Icons"  width="{{screenWidth / 9}}" height="50" tap="redirectToIcon" backgroundColor="green"/>
-                <Button text="Images"  width="{{screenWidth / 9}}" height="50" tap="addPhoto" backgroundColor="blue"/>
+                <Button class="btn btn-outline btn-rounded-lg" text="Voice"  width="{{screenWidth / 12}}" height="30" tap="voidF" backgroundColor="{{color}}"/>
+                <Button class="btn btn-outline btn-rounded-lg" text="Icons"  width="{{screenWidth / 12}}" height="30" tap="redirectToIcon"/>
+                <Button class="btn btn-outline btn-rounded-lg" text="Images"  width="{{screenWidth / 12}}" height="30" tap="addPhoto" />
             </StackLayout>
             <TextField class="input input-border" text="{{ text }}" returnKeyType="done" returnPress="onReturnPress" hint="write a product"/>
             <ListView items="{{ products }}" 
@@ -23,8 +23,8 @@
                     </StackLayout>
                 </ListView.itemTemplate>
             </ListView>
-            <Button text="Delete all"  width="{{screenWidth / 6}}" height="50" tap="removeFromList" backgroundColor="pink"/>
-            <Button text="Delete one"  width="{{screenWidth / 6}}" height="50" tap="removeOneItemFromList" backgroundColor="purple"/>
+            <Button class="btn btn-outline btn-rounded-lg" text="Delete all"  width="{{screenWidth / 6}}" height="30" tap="removeFromList"/>
+            <Button class="btn btn-outline btn-rounded-lg" text="Delete one"  width="{{screenWidth / 6}}" height="30" tap="removeOneItemFromList"/>
         </StackLayout> 
     </GridLayout>
 </Page>
