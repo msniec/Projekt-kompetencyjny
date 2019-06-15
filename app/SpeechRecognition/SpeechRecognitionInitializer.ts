@@ -34,6 +34,7 @@ export class SpeechRecognitionInitializer {
                             if (result == true) {
                                 Products.addProduct(transcription.text);
                                 refresh();
+                                console.log(" najlepsza zmiana ever!");
                             }
                             changeColourButton();
                         });
@@ -43,7 +44,7 @@ export class SpeechRecognitionInitializer {
                     changeColourButton();
                 }
             })
-            .then((started: boolean) => {}, (errorMessage: string) => {})
+            .then((started: boolean) => { }, (errorMessage: string) => { })
             .catch((error: string | number) => {
                 alert('DEA');
             });
